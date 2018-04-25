@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "859737888428",
+    "firebase_url": "https://view-strava-flyby-bd3f9.firebaseio.com",
+    "project_id": "view-strava-flyby-bd3f9",
+    "storage_bucket": "view-strava-flyby-bd3f9.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:859737888428:android:09609c464c79627d",
+        "android_client_info": {
+          "package_name": "com.arifullahjan.viewstravaflyby"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "859737888428-5ff7rj1lnvel026jdp2otoetlm2aucbq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGaEW_ev2U7Ky5yK-bH6_6_0Y9IaDZ7Zc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

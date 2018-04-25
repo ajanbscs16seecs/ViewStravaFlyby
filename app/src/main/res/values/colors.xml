@@ -2,11 +2,12 @@
 <resources>
     <color name="colorPrimary">#000</color>
     <color name="colorPrimaryDark">#000</color>
-    <color name="colorAccent">#000</color>
+    <color name="colorAccent">#fc4c02</color>
 
 
     <color name="colorStrava">#fc4c02</color>
     <color name="colorShare">#19baff</color>
     <color name="colorRate">#438109</color>
+    <color name="colorInsta">#000000</color>
 
 </resources>
