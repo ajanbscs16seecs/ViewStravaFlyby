@@ -207,7 +207,6 @@ public class MainActivity extends AppCompatActivity {
             final WebView myWebView = (WebView) findViewById(R.id.web_view);
 //        WebSettings webSettings = myWebView.getSettings();
 //        webSettings.setJavaScriptEnabled(true);
-//
             WebSettings webSettings = myWebView.getSettings();
             webSettings.setJavaScriptEnabled(true);
             webSettings.setDomStorageEnabled(true);
@@ -244,24 +243,24 @@ public class MainActivity extends AppCompatActivity {
             }
             catch (Exception ignored){
 
+                myWebView.setWebViewClient(new WebViewClient() {
+                    @Override
+                    public void onReceivedError(WebView view, int errorCode, String description, String failingUrl)
+                    {
+                        Toast.makeText(getApplicationContext(),"Sorry!",Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public boolean shouldOverrideUrlLoading(WebView view, String url)
+                    {
+                        view.loadUrl(url);
+                        return true;
+                    }
+                });
+
+                myWebView.loadUrl(url);
             }
 
-            myWebView.setWebViewClient(new WebViewClient() {
-                @Override
-                public void onReceivedError(WebView view, int errorCode, String description, String failingUrl)
-                {
-                    Toast.makeText(getApplicationContext(),"Sorry!",Toast.LENGTH_LONG).show();
-                }
-
-                @Override
-                public boolean shouldOverrideUrlLoading(WebView view, String url)
-                {
-                    view.loadUrl(url);
-                    return true;
-                }
-            });
-
-            myWebView.loadUrl(url);
         }
         catch (Exception e){
             CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
