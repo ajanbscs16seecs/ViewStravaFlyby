@@ -55,38 +55,14 @@ public class MainActivity extends AppCompatActivity {
         firebaseAnalytics= FirebaseAnalytics.getInstance(this);
 
 
-
-
-
         final Intent intent = getIntent();
         String action = intent.getAction();
         String type = intent.getType();
 
         setContentView(R.layout.webview);
 
-        ((TextView)findViewById(R.id.strava_labs)).setTypeface(EasyFonts.caviarDreams(this));
-        ((TextView)findViewById(R.id.open_in_browser)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
 
         show("https://airfa-project.firebaseapp.com",false);
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -101,37 +77,26 @@ public class MainActivity extends AppCompatActivity {
 
             setContentView(R.layout.webview);
 
-            ((TextView)findViewById(R.id.strava_labs)).setTypeface(EasyFonts.caviarDreams(this));
             if ("text/plain".equals(type)) {
                 handleText(intent); // Handle text being sent
             } else if (type.startsWith("image/")) {
                 handleText(intent); // Handle single image being sent
             }
-
-
-
-
-
         }
         else if (Intent.ACTION_VIEW.equals(action) ) {
-
 
             Bundle params = new Bundle();
             params.putString("opened_flyby", "");
             firebaseAnalytics.logEvent("opened_flyby_by_share", params);
 
 
-
             setContentView(R.layout.webview);
-
-            ((TextView)findViewById(R.id.strava_labs)).setTypeface(EasyFonts.caviarDreams(this));
 
             Intent appLinkIntent = getIntent();
             String appLinkAction = appLinkIntent.getAction();
             Uri appLinkData = appLinkIntent.getData();
             String id = appLinkData.getLastPathSegment();
             show("https://airfa-project.firebaseapp.com/flyby/"+id,false);
-
 
         }
 // else {
@@ -238,7 +203,8 @@ public class MainActivity extends AppCompatActivity {
             List<String> urls = Utils.extractUrls(sharedText);
             String activityDeepLink = urls.size()>0 ? urls.get(0):null;
             if(activityDeepLink!= null){
-                show(activityDeepLink,true);
+                List<String> ids = Utils.extractLong(activityDeepLink);
+                show("https://airfa-project.firebaseapp.com/flyby/"+ids.get(0),false);
             }
         }
 
@@ -283,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
                             List<String> ids = Utils.extractLong(activityURL);
                             String id = ids.size()>0 ? ids.get(0) : null;
 
-//                            show("https://airfa-project.firebaseapp.com/flyby/"+id,false);
+                            show("https://airfa-project.firebaseapp.com/flyby/"+id,false);
                         }
                         if(progress == 100){
                             ((ProgressBar)findViewById(R.id.progressBar)).setVisibility(View.GONE);
@@ -338,10 +304,6 @@ public class MainActivity extends AppCompatActivity {
             }
             catch (Exception ignored){
                 Toast.makeText(getApplicationContext(),"Sorry!",Toast.LENGTH_LONG).show();
-
-
-
-
                 myWebView.loadUrl(url);
             }
 
